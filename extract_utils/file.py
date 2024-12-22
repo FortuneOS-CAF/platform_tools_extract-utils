@@ -52,6 +52,7 @@ class FileArgs(str, Enum):
     DISABLE_DEPS = 'DISABLE_DEPS'
     FIX_SONAME = 'FIX_SONAME'
     FIX_XML = 'FIX_XML'
+    STRIP_DEBUG_SECTIONS = 'STRIP_DEBUG_SECTIONS'
     OVERRIDES = 'OVERRIDES'
     PRESIGNED = 'PRESIGNED'
     REQUIRED = 'REQUIRED'
@@ -72,6 +73,7 @@ FILE_ARGS_TYPE_MAP = {
     FileArgs.DISABLE_DEPS: True,
     FileArgs.FIX_SONAME: True,
     FileArgs.FIX_XML: True,
+    FileArgs.STRIP_DEBUG_SECTIONS: True,
     FileArgs.OVERRIDES: list,
     FileArgs.PRESIGNED: True,
     FileArgs.REQUIRED: list,

@@ -744,6 +744,9 @@ class ExtractUtilsModule:
         if FileArgs.FIX_SONAME in file.args:
             return True
 
+        if FileArgs.STRIP_DEBUG_SECTIONS in file.args:
+            return True
+
         if self.blob_fixups.get(file.dst) is not None:
             return True
 
@@ -758,6 +761,9 @@ class ExtractUtilsModule:
 
         if FileArgs.FIX_SONAME in file.args:
             blob_fixup().fix_soname().run(ctx, file, file_path)
+
+        if FileArgs.STRIP_DEBUG_SECTIONS in file.args:
+            blob_fixup().strip_debug_sections().run(ctx, file, file_path)
 
         # TODO: mark which fixups have been used and print unused ones
         # at the end
