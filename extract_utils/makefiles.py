@@ -197,8 +197,6 @@ def write_elfs_package(
     bitses = []
     depses = []
 
-    partition = builder.get_partition()
-
     for f in files:
         f_path = f'{ctx.vendor_prop_path}/{f.dst}'
 
@@ -207,7 +205,7 @@ def write_elfs_package(
             return write_sh_package(files[0], builder, any_extension=True)
 
         deps = remove_libs_so_ending(libs)
-        deps = run_libs_fixup(ctx.lib_fixups, deps, partition)
+        deps = run_libs_fixup(ctx.lib_fixups, deps, file.partition)
         machines.append(machine)
         bitses.append(bits)
         depses.append(deps)

@@ -74,10 +74,6 @@ class BpBuilder:
         self.__partition = partition
         return self
 
-    def get_partition(self):
-        assert self.__partition is not None
-        return self.__partition
-
     def set_rule_name(self, rule_name: str):
         self.__rule_name = rule_name
         return self
