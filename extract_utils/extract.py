@@ -13,9 +13,9 @@ import tempfile
 from concurrent.futures import ProcessPoolExecutor
 from contextlib import contextmanager
 from os import path
-from tarfile import TarFile
+from tarfile import TarFile, is_tarfile
 from typing import Callable, Generator, Iterable, List, Optional, Set, Union
-from zipfile import ZipFile
+from zipfile import ZipFile, is_zipfile
 
 from extract_utils.fixups import fixups_type, fixups_user_type
 from extract_utils.tools import (
@@ -698,13 +698,9 @@ def extract_tar(source: str, ctx: ExtractCtx, dump_dir: str):
 
 
 def extract_image_file(source: str, ctx: ExtractCtx, dump_dir: str):
-    if source.endswith('.zip'):
+    if is_zipfile(source):
         extract_fn = extract_zip
-    elif (
-        source.endswith('.tar.gz')
-        or source.endswith('.tgz')
-        or source.endswith('.tar')
-    ):
+    elif is_tarfile(source):
         extract_fn = extract_tar
     else:
         raise ValueError(f'Unexpected file type at {source}')
