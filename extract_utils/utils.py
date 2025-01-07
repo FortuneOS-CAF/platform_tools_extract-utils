@@ -5,11 +5,11 @@
 
 from __future__ import annotations
 
-import contextlib
 import hashlib
 import importlib.util
 import os
 import shutil
+from contextlib import contextmanager
 from enum import Enum
 from functools import lru_cache
 from subprocess import PIPE, Popen, run
@@ -197,7 +197,7 @@ def parse_lines(lines: Iterable[str]) -> List[str]:
     return valid_lines
 
 
-@contextlib.contextmanager
+@contextmanager
 def TemporaryWorkingDirectory(dir_path: str) -> Generator[None, None, None]:
     cwd = os.getcwd()
 
