@@ -674,12 +674,7 @@ def extract_zip(
 
 
 def extract_tar(source: str, ctx: ExtractCtx, dump_dir: str):
-    if source.endswith('gz'):
-        mode = 'r:gz'
-    else:
-        mode = 'r'
-
-    with tarfile.open(source, mode) as tar:
+    with tarfile.open(source, 'r:*') as tar:
         file_paths = tar.getnames()
         file_paths = filter_extract_file_paths(ctx, file_paths)
 
