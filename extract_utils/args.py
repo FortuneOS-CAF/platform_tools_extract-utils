@@ -33,11 +33,6 @@ group.add_argument(
     action='store_true',
     help='only extract target module',
 )
-group.add_argument(
-    '--extract-factory',
-    action='store_true',
-    help='extract factory files',
-)
 # TODO: --only-firmware
 
 parser.add_argument(
@@ -74,6 +69,11 @@ parser.add_argument(
     '--legacy',
     action='store_true',
     help='generate legacy makefiles',
+)
+parser.add_argument(
+    '--extract-factory',
+    action='store_true',
+    help='extract factory files',
 )
 parser.add_argument(
     '--keep-dump',
